@@ -5,9 +5,8 @@ import React, {
   useState,
   useCallback,
 } from 'react';
-
-import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
+import { IconBaseProps } from 'react-icons';
 
 import { Container } from './styles';
 

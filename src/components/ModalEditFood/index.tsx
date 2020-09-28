@@ -1,10 +1,11 @@
 import React, { useRef, useCallback } from 'react';
-
-import { FiCheckSquare } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
-import { Form } from './styles';
-import Modal from '../Modal';
+import { FiCheckSquare } from 'react-icons/fi';
+
 import Input from '../Input';
+import Modal from '../Modal';
+
+import { Form } from './styles';
 
 interface IFoodPlate {
   id: number;
@@ -39,7 +40,9 @@ const ModalEditFood: React.FC<IModalProps> = ({
 
   const handleSubmit = useCallback(
     async (data: IEditFoodData) => {
-      // EDIT A FOOD PLATE AND CLOSE THE MODAL
+      const { name, image, price, description } = data;
+      handleUpdateFood({ name, image, price, description });
+      setIsOpen();
     },
     [handleUpdateFood, setIsOpen],
   );
@@ -48,16 +51,16 @@ const ModalEditFood: React.FC<IModalProps> = ({
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={editingFood}>
         <h1>Editar Prato</h1>
-        <Input name="image" placeholder="Cole o link aqui" />
+        <Input name='image' placeholder='Cole o link aqui' />
 
-        <Input name="name" placeholder="Ex: Moda Italiana" />
-        <Input name="price" placeholder="Ex: 19.90" />
+        <Input name='name' placeholder='Ex: Moda Italiana' />
+        <Input name='price' placeholder='Ex: 19.90' />
 
-        <Input name="description" placeholder="Descrição" />
+        <Input name='description' placeholder='Descrição' />
 
-        <button type="submit" data-testid="edit-food-button">
-          <div className="text">Editar Prato</div>
-          <div className="icon">
+        <button type='submit' data-testid='edit-food-button'>
+          <div className='text'>Editar Prato</div>
+          <div className='icon'>
             <FiCheckSquare size={24} />
           </div>
         </button>

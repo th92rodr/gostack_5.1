@@ -1,7 +1,7 @@
 import React from 'react';
-
-import { render, fireEvent, act, wait } from '@testing-library/react';
 import AxiosMock from 'axios-mock-adapter';
+import { render, fireEvent, act, wait } from '@testing-library/react';
+
 import api from '../../services/api';
 
 import Dashboard from '../../pages/Dashboard';
@@ -267,7 +267,7 @@ describe('Dashboard', () => {
     expect(getByTestId('foods-list')).toBeEmpty();
   });
 
-  it('should be able to update the availibility of a food plate', async () => {
+  it('should be able to update the availability of a food plate', async () => {
     apiMock.onGet('foods').reply(200, [
       {
         id: 1,
